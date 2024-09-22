@@ -1,9 +1,10 @@
+package Exercicios;
 import java.io.PrintStream;
 import java.sql.SQLOutput;
 import java.util.Locale;
 
 public class Exe01 {
-    public static void ex01(String[] args){
+    public static void main(String[] args){
             String product01 = "Computer";
             String product02 = "Office desk";
 
@@ -24,5 +25,5 @@ public class Exe01 {
             java.util.Locale.setDefault(java.util.Locale.US);
             System.out.printf("US decimal point: %.3f%n", measure);
 
-        }
+    }
 }
