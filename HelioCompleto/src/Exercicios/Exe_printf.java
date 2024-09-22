@@ -1,9 +1,6 @@
 package Exercicios;
-import java.io.PrintStream;
-import java.sql.SQLOutput;
-import java.util.Locale;
 
-public class Exe01 {
+public class Exe_printf {
     public static void main(String[] args){
             String product01 = "Computer";
             String product02 = "Office desk";
