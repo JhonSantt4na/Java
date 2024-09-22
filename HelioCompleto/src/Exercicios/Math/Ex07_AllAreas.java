@@ -14,9 +14,9 @@ public class Ex07_AllAreas {
 
     double pi = 3.14159;
 
-    float Triangulo = A * C / 2;
+    float Triangulo = A * C / 2f;
     double Circulo = pi * Math.pow(C, 2.0);
-    float Trapezio = (A + B) * C / 2;
+    float Trapezio = (A + B) / 2 * C;
     float Quadrado = (float) Math.pow(B, 2.0);
     float Retangulo = A * B;
 
