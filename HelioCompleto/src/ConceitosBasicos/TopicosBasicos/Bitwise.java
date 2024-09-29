@@ -29,8 +29,5 @@ public class Bitwise {
     }else{
       System.out.println("6th bit is false");
     }
-
-
-
   }
 }

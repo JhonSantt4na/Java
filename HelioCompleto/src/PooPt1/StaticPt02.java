@@ -1,11 +1,9 @@
-package PooPt1.ExercioPoo;
+package PooPt1;
 
 import PooPt1.Entidades.Estatic02;
 
 import java.util.Locale;
 import java.util.Scanner;
-
-import static PooPt1.Entidades.Estatic02.*;
 
 public class StaticPt02 {
  // Passamos para uma novo arq
@@ -27,5 +25,4 @@ public class StaticPt02 {
 
     sc.close();
   }
-
 }
