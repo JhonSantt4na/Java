@@ -21,7 +21,7 @@ public class OperadoresMatematicos {
         // Arithmetic operator = + - / * %
         // Order of Precedence = ()  »  / * %  »  + -
         int num1 = 2;
-        int num2 = 4;
+        int num2 = 3;
 
         // basic operator
         int Addition = num1 + num2;
