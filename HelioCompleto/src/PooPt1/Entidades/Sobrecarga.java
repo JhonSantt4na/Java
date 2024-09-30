@@ -1,9 +1,25 @@
-package Entidades;
+package PooPt1.Entidades;
 
-public class Product {
+public class Sobrecarga {
   public String name;
   public double price;
   public int qty;
+
+  public Sobrecarga(){
+
+  }
+
+  public Sobrecarga(String name, double price) {
+    this.name = name;
+    this.price = price;
+    // Opcional o uso de this.quantity ou quantity = 0 pois por padrão comerça com 0
+  }
+
+  public Sobrecarga(String name, double price, int qty) {
+    this.name = name;
+    this.price = price;
+    // Sobrecarga mais de 1 construtor
+  }
 
   public double totalValueInStock(){
     return  price * qty;
@@ -27,5 +43,4 @@ public class Product {
             " units, Total: $ "
             + String.format("%.2f", totalValueInStock());
   }
-
 }
