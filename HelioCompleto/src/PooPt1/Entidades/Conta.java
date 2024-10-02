@@ -16,7 +16,6 @@ public class Conta {
             String.format("%.2f", balance);
   }
 
-
   public Conta(int numeroConta,String nomeTitular) {
     this.number = numeroConta;
     this.holder = nomeTitular;
