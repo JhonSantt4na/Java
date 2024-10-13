@@ -1,6 +1,8 @@
 package EnumeracaoComposicao.ExemploEnumeracao;
-import EnumeracaoComposicao.ExemploEnumeracao.Entities.Order;
+
 import EnumeracaoComposicao.ExemploEnumeracao.Enum.StatusOrder;
+import ExemploEnumeracao.entities.Order;
+
 import java.util.Date;
 
 public class Aplicacao {

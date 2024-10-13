@@ -1,4 +1,4 @@
-package EnumeracaoComposicao.ExemploEnumeracao.Entities;
+package ExemploEnumeracao.entities;
 
 import EnumeracaoComposicao.ExemploEnumeracao.Enum.StatusOrder;
 
