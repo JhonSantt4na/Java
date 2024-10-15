@@ -19,6 +19,12 @@ public class SavingsAccount extends Account{
 		this.interestRate = interestRate;
 	}
 	
+	@Override // Isso indica que é uma sobreposição de metodos
+	// sem o Override não tem erro. mas com o Override ativo ele procura na super se nao achar retorna um erro
+	public void withdraw(double amount){
+		balance -= amount;// Na SavingAccount não descontamos o 5.0 que temos na Account ou Super Classe
+	}
+	
 	public void updateBalance(){
 		balance += balance * interestRate;
 	}

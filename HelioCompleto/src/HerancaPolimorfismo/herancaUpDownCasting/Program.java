@@ -39,5 +39,21 @@ public class Program {
 		}
 		
 		// Como o primeiro if falha ele pula pra o segundo ele faz o downCastinf e executa o metodo updated
+		
+		// Overide
+		
+		Account acc6 = new Account(1001,"Alexa",1000.00);
+		acc6.withdraw(200.00);
+		System.out.println(acc6.getBalance()); // return 795 ou seja -220 do sque e 5 da taxa
+		
+		Account acc7 = new SavingsAccount(1002, "Marcos", 1000.0, 0.01);
+		acc7.withdraw(200);
+		System.out.println(acc7.getBalance()); // return 800 pois com a sobreposição não temnos taxas na classe SavingsAccount
+	
+		// Super
+		// Serve para usar o saque da superClasse e adicionar mais alguma coisa ex:
+		Account acc8 = new BusinessAccount(1003, "bob", 1000.0, 500.0);
+		acc8.withdraw(200.0);
+		System.out.println(acc8.getBalance()); // Return o 793.0 pois desconta os 200 + 5.0 da super classe e 2.0 da BunisesAccount
 	}
 }

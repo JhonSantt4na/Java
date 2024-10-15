@@ -35,4 +35,11 @@ public class BusinessAccount extends Account {
 			deposit(amount);
 		}
 	}
+	
+	@Override
+	public void withdraw(double amount){
+		super.withdraw(amount); // Usamos o metodo da SuperClasse
+		balance -= 2.0; // e adicionamos mais um metodo que so tem na BusinessAccount
+	}
+	
 }
