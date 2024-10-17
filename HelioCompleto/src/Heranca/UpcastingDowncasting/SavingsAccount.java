@@ -1,15 +1,19 @@
-package HerancaPolimorfismo.herancaUpDownCasting;
+package Heranca.UpcastingDowncasting;
 
-public class SavingsAccount extends Account{
+import Heranca.Herancaex.Account;
+
+public class SavingsAccount extends Account {
 	private Double interestRate;
 	
 	public SavingsAccount(){
+		super();
 	}
-	
+	// Escolhendo o construtor completo
 	public SavingsAccount(Integer number, String holder, Double balance, Double interestRate) {
 		super(number, holder, balance);
 		this.interestRate = interestRate;
 	}
+	// Getters && Setters
 	
 	public Double getInterestRate() {
 		return interestRate;
@@ -18,13 +22,8 @@ public class SavingsAccount extends Account{
 	public void setInterestRate(Double interestRate) {
 		this.interestRate = interestRate;
 	}
-	
-	@Override // Isso indica que é uma sobreposição de metodos
-	// sem o Override não tem erro. mas com o Override ativo ele procura na super se nao achar retorna um erro
-	public void withdraw(double amount){
-		balance -= amount;// Na SavingAccount não descontamos o 5.0 que temos na Account ou Super Classe
-	}
-	
+	// Metodos
+	// Atualizando o saldo com os juros
 	public void updateBalance(){
 		balance += balance * interestRate;
 	}

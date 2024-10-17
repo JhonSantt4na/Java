@@ -1,11 +1,11 @@
-package HerancaPolimorfismo.herancaUpDownCasting;
+package Heranca.Herancaex;
 
 public class Account {
 	private Integer number;
 	private String holder;
-	protected Double balance; // Para Acessar com as Subclasses
+	protected Double balance;
 	
-	public Account(){
+	public Account() {
 	}
 	
 	public Account(Integer number, String holder, Double balance) {
@@ -33,16 +33,14 @@ public class Account {
 	public Double getBalance() {
 		return balance;
 	}
-	
-	public void setBalance(Double balance) {
-		this.balance = balance;
-	}
-	// Methods
+	// Precisamos Remover o setBalance => Pois não podemos permitir mudar esse valor
+
+	// Metodos:
 	public void withdraw(double amount){
-		balance -= amount + 5.0;
+		balance -= amount;
 	}
 	
-	public void deposit(double amount){
+	public void deposit(double amount) {
 		balance += amount;
 	}
 }
