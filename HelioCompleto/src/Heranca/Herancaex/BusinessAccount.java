@@ -41,5 +41,10 @@ public class BusinessAccount extends Account{
 		// heranca é uma associação entre classe e não objetos
 	}
 	
-	// Protected =>
+	@Override
+	public void withdraw(double amount){
+		super.withdraw(amount);
+		balance -= 2.0 ;
+	}
+	
 }
