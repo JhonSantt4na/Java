@@ -1,6 +1,6 @@
-package Heranca;
+package HerancaPolimofismo;
 
-import Heranca.UpcastingDowncasting.SavingsAccount;
+import HerancaPolimofismo.Herancaex.SavingsAccount;
 
 public class ClassesFinal {
 	// Quando ultilizamos a palavra final na:

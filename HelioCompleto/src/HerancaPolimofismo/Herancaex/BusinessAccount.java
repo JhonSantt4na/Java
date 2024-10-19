@@ -1,4 +1,4 @@
-package Heranca.Herancaex;
+package HerancaPolimofismo.Herancaex;
 
 public class BusinessAccount extends Account{
 	// extends => a Clase BusinessAccount herda todos os dados e atributos da Account

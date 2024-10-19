@@ -1,4 +1,4 @@
-package Heranca.Herancaex;
+package HerancaPolimofismo.Herancaex;
 
 public class Account {
 	private Integer number;

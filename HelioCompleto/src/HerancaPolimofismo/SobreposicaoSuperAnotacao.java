@@ -1,8 +1,8 @@
-package Heranca;
+package HerancaPolimofismo;
 
-import Heranca.Herancaex.Account;
-import Heranca.Herancaex.BusinessAccount;
-import Heranca.UpcastingDowncasting.SavingsAccount;
+import HerancaPolimofismo.Herancaex.Account;
+import HerancaPolimofismo.Herancaex.BusinessAccount;
+import HerancaPolimofismo.Herancaex.SavingsAccount;
 
 public class SobreposicaoSuperAnotacao {
 	// Sobreposição : podemos definir um comportamento diferente pra um metodo da superclasse

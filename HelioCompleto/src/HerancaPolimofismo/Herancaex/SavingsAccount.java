@@ -1,6 +1,4 @@
-package Heranca.UpcastingDowncasting;
-
-import Heranca.Herancaex.Account;
+package HerancaPolimofismo.Herancaex;
 
 public class SavingsAccount extends Account {
 	private Double interestRate;

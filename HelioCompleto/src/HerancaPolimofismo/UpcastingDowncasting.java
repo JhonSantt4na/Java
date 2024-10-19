@@ -1,7 +1,8 @@
-package Heranca.UpcastingDowncasting;
+package HerancaPolimofismo;
 
-import Heranca.Herancaex.Account;
-import Heranca.Herancaex.BusinessAccount;
+import HerancaPolimofismo.Herancaex.Account;
+import HerancaPolimofismo.Herancaex.BusinessAccount;
+import HerancaPolimofismo.Herancaex.SavingsAccount;
 
 public class UpcastingDowncasting {
 	// UpCasting => Da Sub para a Super
