@@ -7,7 +7,7 @@ import HerancaPolimofismo.Herancaex.SavingsAccount;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Intro {
+public class ClassesAbstracts {
 	// São Classes que não podem ser instamciadas
 	// Forma de Garantir herança total : somente subclasses não abstratas
 	// podem ser instanciadas, mas nunca a superclasse abstrata.
