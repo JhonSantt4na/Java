@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class PilhaChamada {
 	public static void main(String[] args) {
 		method01();
-		System.out.println("End of Program");
+		System.out.println("End of ProgramMR");
 	}
 	public static void method01() {
 		System.out.println("***METHOD1 START***"); // Quando inicia o Method1

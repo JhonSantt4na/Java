@@ -21,7 +21,7 @@ public class TryCatch {
 		}
 		// Sem os tratamento dos erros o programa encerra
 		// Anntes de exibir a msg que o programa terminou
-		System.out.println("Fim do Program");
+		System.out.println("Fim do ProgramMR");
 		sc.close();
 	}
 }
