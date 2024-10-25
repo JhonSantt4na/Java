@@ -1,17 +1,22 @@
-package TratamentoErro.VersaoRuim;
+package TratamentoErro.versaoBoa.model.Entities;
+
+import TratamentoErro.versaoBoa.model.Exceptions.DoMainException;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-public class ReservationRuim {
+public class ReservationBoa {
 	private Integer roomNumber;
 	private Date checkin;
 	private Date checkout;
 	
 	private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	
-	public ReservationRuim(Integer roomNumber, Date checkin, Date checkout) {
+	public ReservationBoa(Integer roomNumber, Date checkin, Date checkout) throws DoMainException {
+		if (!checkout.after(checkin)){
+			throw  new DoMainException("Check-out date must be after check-in date");
+		}
 		this.roomNumber = roomNumber;
 		this.checkin = checkin;
 		this.checkout = checkout;
@@ -39,18 +44,20 @@ public class ReservationRuim {
 		return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
 	}
 	
-	// o methodo vai retorna ums string agr
-	public String updateDate(Date checkIn, Date checkOut){
+	// o methodo vai retorna uma exeção caso tenha um erro
+	public void updateDate(Date checkIn, Date checkOut) throws DoMainException{
+		// Precisamos colocar a assinatura, para que o metodo possa lança uma execção
+		// Passa pelo os if e se e caso passe direto não tera exeção
 		Date now = new Date();
 		if (checkIn.before(now) || checkOut.before(now)) {
-			return "Reservation dates for update must be future dates";
+			throw new DoMainException("Reservation dates for update must be future dates");
+			// IllegalArgumentException : quando os argumentos são invalidos
 		}
 		if (!checkOut.after(checkIn)){
-			return "heck-out date must be after check-in date";
+			throw  new DoMainException("heck-out date must be after check-in date");
 		}
 		this.checkin = checkIn;
 		this.checkout = checkOut;
-		return null; // Falando que não houve erros
 	}
 	
 	@Override //Sempre colocamos no toString
