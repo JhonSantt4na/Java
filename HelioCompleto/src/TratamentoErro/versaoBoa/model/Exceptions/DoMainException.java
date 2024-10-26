@@ -18,6 +18,4 @@ public class DoMainException extends Exception{
 		super(msg);
 	}
 	
-	
-	
 }
