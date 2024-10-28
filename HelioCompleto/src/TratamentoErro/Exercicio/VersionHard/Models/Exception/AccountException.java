@@ -1,8 +1,8 @@
-package TratamentoErro.Exercicio.Models.Exception;
+package TratamentoErro.Exercicio.VersionHard.Models.Exception;
 
 import java.io.Serial;
 
-public class AccountException extends Exception{
+public class AccountException extends RuntimeException{
 	
 	@Serial
 	private static final long serialVersionUID = 1L;
