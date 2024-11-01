@@ -9,9 +9,10 @@ public class app {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter with path file: ");
         String path = sc.nextLine();
-        File lendoPath = FileReader(path);
-        System.out.println("Como Funciona");
+        String name = "Jhonn";
+        if(name.equals("Jhonn")){
 
+        }
         sc.close();
     }
 }
