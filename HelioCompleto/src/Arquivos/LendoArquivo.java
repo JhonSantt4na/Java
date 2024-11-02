@@ -14,11 +14,15 @@ public class LendoArquivo {
         // Instanciamos um objeto tipo File
         // e passamos o caminho e o arquivo pra ele
         File file = new File("/home/jhondev/IdeaProjects/Java/HelioCompleto/src/Arquivos/input.txt");
+        // nesse caso ele encapsulara o processo de acessar o arquivo e o caminho do arquivo
+
+
         // Com isso o file. tem varios methodos pra se usar ex:
         Scanner sc = null;
         // Instanciando o Scaner apartir do arquivo
         // porem ou fazer isso vamos tentar abri o arquivo e se der uma exception sera do tipo IOException
         // Ou seja vamos usar o Try
+
         try{
             sc=new Scanner(file);
             // vamos verificar se tem mais linhas caso sim vamos exibir

@@ -28,7 +28,7 @@ public class ManipulandoPastas {
 
         // criando Pasta
         boolean success = new File(strPath + "//PastaCriada").mkdir();
-        System.out.println("Directory Creare with Success: " + success);
+        System.out.println("Directory Created with Successfully: " + success);
 
         sc.close();
     }

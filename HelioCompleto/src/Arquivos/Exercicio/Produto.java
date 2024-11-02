@@ -6,18 +6,12 @@ public class Produto {
     private Integer qty;
 
     // Constructors
-
-    public Produto() {
-    }
-
     public Produto(String name, Double price, Integer qty) {
         this.name = name;
         this.price = price;
         this.qty = qty;
     }
     // Getters && Setters
-
-
     public String getName() {
         return name;
     }
@@ -41,10 +35,8 @@ public class Produto {
     public void setQty(Integer qty) {
         this.qty = qty;
     }
-
     // Methods
-    public double totalValue(){
+    public double total(){
         return price * qty;
     }
-
 }
