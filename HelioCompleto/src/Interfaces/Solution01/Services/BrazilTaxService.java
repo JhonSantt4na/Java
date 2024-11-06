@@ -1,6 +1,9 @@
 package Interfaces.Solution01.Services;
 
-public class BrazilTaxService {
+import Interfaces.Solucion02Interface.TaxService;
+
+// BrazilTaxService com o implements depende da TaxService
+public class BrazilTaxService  implements TaxService {
 	public double tax(double amount){
 		if (amount <= 100.0){
 			return amount * 0.2;

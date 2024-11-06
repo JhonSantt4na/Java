@@ -38,6 +38,7 @@ public class app {
 		double pricePerDay = sc.nextDouble();
 		
 		RentalService rentalService = new RentalService(pricePerHour, pricePerDay, new BrazilTaxService());
+		// BrazilTaxService Funciona perfeitamente pois é um upcasting
 		rentalService.processInvoice(cr);
 		
 		System.out.println("FATURA :");

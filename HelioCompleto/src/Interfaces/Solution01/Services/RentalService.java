@@ -1,5 +1,6 @@
 package Interfaces.Solution01.Services;
 
+import Interfaces.Solucion02Interface.TaxService;
 import Interfaces.Solution01.Entities.CarRental;
 import Interfaces.Solution01.Entities.Invoice;
 
@@ -9,10 +10,14 @@ public class RentalService {
 	private Double pricePerDay;
 	private Double pricePerHours;
 	
-	// Isso nçao é uma boa pratica pois o servico de
-	private BrazilTaxService taxService;
+	// Isso nao é uma boa pratica pois o servico de RentalService depende exclusivamente para o BrazilTaxService
+	// Com dois pontos de alteração
+	private TaxService taxService;
 	
-	public RentalService(Double pricePerHours, Double pricePerDay, BrazilTaxService taxService) {
+	// Agr a Tax Service é como se fosse uma classe abstrata sendo assim o RentalService
+	//  Não sabe o que sera implementado.
+	
+	public RentalService(Double pricePerHours, Double pricePerDay, TaxService taxService) {
 		this.pricePerHours = pricePerHours;
 		this.pricePerDay = pricePerDay;
 		this.taxService = taxService;
