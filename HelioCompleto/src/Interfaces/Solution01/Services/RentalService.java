@@ -9,6 +9,7 @@ public class RentalService {
 	private Double pricePerDay;
 	private Double pricePerHours;
 	
+	// Isso nçao é uma boa pratica pois o servico de
 	private BrazilTaxService taxService;
 	
 	public RentalService(Double pricePerHours, Double pricePerDay, BrazilTaxService taxService) {
