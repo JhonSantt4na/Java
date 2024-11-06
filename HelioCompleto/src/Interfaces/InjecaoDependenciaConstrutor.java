@@ -9,3 +9,4 @@ public class InjecaoDependenciaConstrutor {
 	
 	// Forte Acoplamento = quando for mudar algo sempre tera 2 pontos de alteração
 }
+
