@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class LendoArquivo {
     /* Classes :
         File - representação abstrata de um arquivo e seu caminho
-        Scanner - Leitor de Texto
+        ConcreatScanner - Leitor de Texto
         IOException(Herda de Exception)
     * */
     public static void main(String[] args) {

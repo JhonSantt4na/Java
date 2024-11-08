@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class EntradaDados {
   public static void main(String[] args) {
-    // Import Scanner and use the as method in the next saved variables
+    // Import ConcreatScanner and use the as method in the next saved variables
     Scanner sc = new Scanner(System.in);
 
     String name;
@@ -24,6 +24,6 @@ public class EntradaDados {
     height = sc.nextDouble(); // To double use nextDouble()
 
     System.out.printf("Your name is: %s %nsex: %s %nyou have %d age %nand %.2f height", name,sex,age,height);
-    sc.close();   // Closing method Scanner
+    sc.close();   // Closing method ConcreatScanner
   }
 }
