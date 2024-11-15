@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PrintService<T> {
-	// <T> pode ser qualuqer tipo
+	// <T> pode ser qualquer tipo
 	
 	private  List<T> list = new ArrayList<>();
 	
@@ -38,6 +38,8 @@ public class PrintService<T> {
 	
 	//A Melhor solução é usar o Generic pois assim podemos garantir o tape safety e reuso
 	
+	//List.get(0) é um metodo usado para listas (List, como ArrayList ou LinkedList).
+	//array[0] é usado para acessar elementos diretamente em arrays.
 	
 	public  void addValue(T value){
 		list.add(value);
@@ -49,7 +51,7 @@ public class PrintService<T> {
 		}
 		return list.get(0);
 	}
-	
+
 	public void print(){
 		System.out.print("[ ");
 		if (!list.isEmpty()){

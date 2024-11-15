@@ -12,7 +12,7 @@ public class app {
 		
 		System.out.print("How many values? ");
 		int n = sc.nextInt();
-		
+		//não deixa adicionar qualuer coisa do tipo object
 		for (int i = 0; i < n; i++){
 			int value = sc.nextInt();
 			ps.addValue(value);

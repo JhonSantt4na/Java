@@ -1,5 +1,7 @@
 package Generics.GenericosDelimitados;
 
+// Ai com isso precisamos dizer que implementa o comparable
+// e teremos que adicionar o metodo que mostra o que vamos comparar
 public class Product implements Comparable<Product> {
 		private String name;
 		private Double price;
@@ -34,4 +36,6 @@ public class Product implements Comparable<Product> {
 		public int compareTo(Product other) {
 			return price.compareTo(other.getPrice());
 		}
+		// esse method diz que vamos comparar um precço com outro
+		
 }
