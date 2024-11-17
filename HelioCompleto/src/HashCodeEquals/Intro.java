@@ -1,4 +1,4 @@
-package Generics.HashCodeEquals;
+package HashCodeEquals;
 
 public class Intro {
 	// São operações da classe object ultilizadas para comparar se um objeto é

@@ -1,4 +1,4 @@
-package Generics.HashCodeEquals;
+package HashCodeEquals;
 
 public class HashCode {
 	// Metodo que retorna um numero inteiro representando um codigo

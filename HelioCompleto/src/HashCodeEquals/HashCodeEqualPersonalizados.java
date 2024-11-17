@@ -1,4 +1,4 @@
-package Generics.HashCodeEquals;
+package HashCodeEquals;
 
 import java.util.Objects;
 

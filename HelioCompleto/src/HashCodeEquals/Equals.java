@@ -1,4 +1,4 @@
-package Generics.HashCodeEquals;
+package HashCodeEquals;
 
 public class Equals {
 	// Metodo que compara se o objeto é iguak a outro, retornando true ou false
