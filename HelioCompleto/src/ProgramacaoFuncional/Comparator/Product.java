@@ -1,5 +1,6 @@
 package ProgramacaoFuncional.Comparator;
 
+//public class Product implements Compable<Product>{}
 public class Product  {
 	private String name;
 	private Double price;
@@ -25,8 +26,15 @@ public class Product  {
 		this.price = price;
 	}
 	
+	@Override
 	public  String toString() {
 		return "Product [name = " + name + ", Price = " + price + "]";
 	}
+	
+	//@override
+	//public int compareTo(Product p) {
+		//return name.toUpperCase().compareTo(p.getName().toUpperCase());
+	//}
+	
 	
 }

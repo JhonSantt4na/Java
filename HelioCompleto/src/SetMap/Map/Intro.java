@@ -18,7 +18,7 @@ public class Intro {
 		
 		//• Principais implementações:
 		//• HashMap - mais rápido (operações O(1) em tabela hash) e não ordenado
-		//• TreeMap - mais lento (operações O(log(n)) em árvore rubro-negra) e ordenado pelo compareTo do objeto (ou Comparator)
+		//• TreeMap - mais lento (operações O(log(n)) em árvore rubro-negra) e ordenado pelo compareTo do objeto (ou ComparatorIntro)
 		//• LinkedHashMap - velocidade intermediária e elementos na ordem em que são adicionados
 		
 		Map<String, String> cookies = new TreeMap<>();
