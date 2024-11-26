@@ -1,13 +1,11 @@
 package ProgramacaoFuncional.Predicate;
 
 import ProgramacaoFuncional.Predicate.Entities.Product;
-import ProgramacaoFuncional.Predicate.Util.ProductPredicate;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
 
-public class ImplementacaoInterface {
+public class ImplementacaoPredicate {
 	// public interface Predicate<T> {
 	//			boolean test(T t);
 	//}
