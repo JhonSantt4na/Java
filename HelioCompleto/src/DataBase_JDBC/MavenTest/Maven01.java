@@ -1,4 +1,4 @@
 package DataBase_JDBC.MavenTest;
 
-public class teste {
+public class Maven01 {
 }
