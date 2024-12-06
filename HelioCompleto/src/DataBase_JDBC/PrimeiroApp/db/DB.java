@@ -36,7 +36,7 @@ public class DB {
 	}
 	
 	private static Properties loadPropeties(){
-		try (FileInputStream fs = new FileInputStream("src/DataBase_JDBC/PrimeiroApp/db.properties")){
+		try (FileInputStream fs = new FileInputStream("/home/jhondev/IdeaProjects/Java/HelioCompleto/src/DataBase_JDBC/PrimeiroApp/db.properties")){
 				Properties props = new Properties();
 				props.load(fs);
 				return props;

@@ -1,16 +1,13 @@
-package DataBase_JDBC.ResgatandoDados.db;
+package DataBase_JDBC.ResgatandoDados;
 
 import DataBase_JDBC.PrimeiroApp.db.DbException;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Properties;
 
 public class DB {
-	
 	private static Connection conn = null;
 	
 	public static Connection getConnection() {
@@ -38,13 +35,34 @@ public class DB {
 	}
 	
 	private static Properties loadPropeties(){
-		try (FileInputStream fs = new FileInputStream("src/DataBase_JDBC/PrimeiroApp/db.properties")){
-				Properties props = new Properties();
-				props.load(fs);
-				return props;
+		try (FileInputStream fs = new FileInputStream("/home/jhondev/IdeaProjects/Java/HelioCompleto/src/DataBase_JDBC/ResgatandoDados/db.properties")){
+			Properties props = new Properties();
+			props.load(fs);
+			return props;
 		}
 		catch (IOException e){
 			throw  new DbException(e.getMessage());
 		}
 	}
+	
+	public static void closeStatement (Statement st) {
+		if( st != null ){
+			try {
+				st.close();
+			} catch (SQLException e) {
+				throw new DbException(e.getMessage());
+			}
+		}
+	}
+	
+	public static void closeResultSet (ResultSet rs) {
+		if( rs != null ){
+			try {
+				rs.close();
+			} catch (SQLException e) {
+				throw new DbException(e.getMessage());
+			}
+		}
+	}
+	
 }
