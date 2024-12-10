@@ -1,6 +1,5 @@
-package _12_DataBase_JDBC.ProjetoJDBC_DAO.model.dao;
+package _12_DataBase_JDBC.ProjetoJDBC_DAO.model.InterfacesDao;
 
-import _12_DataBase_JDBC.ProjetoJDBC_DAO.model.entities.Department;
 import _12_DataBase_JDBC.ProjetoJDBC_DAO.model.entities.Seller;
 
 import java.util.List;
