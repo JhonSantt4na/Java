@@ -1,0 +1,4 @@
+Verificando o histórico de versões
+git log
+Listagem resumida:
+git log --oneline

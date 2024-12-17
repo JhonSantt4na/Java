@@ -1,0 +1,7 @@
+Demo: clonar e modificar um projeto de um repositório
+remoto que você tem permissão para alterar
+
+git clone git@github.com:seuusuario/seurepositorio.git
+git add .
+git commit -m "Mensagem explicativa"
+git push

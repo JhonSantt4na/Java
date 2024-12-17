@@ -1,0 +1,10 @@
+Configurando sua identificação no Git
+
+git config --global user.name "Seu nome"
+git config --global user.email "Seu email de cadastro do Github"
+git config --list
+
+Configuração para ver arquivos ocultos (Windows)
+Iniciar -> Opções do explorador de arquivos
+DESMARCAR: "Ocultar as extensões dos tipos de arquivos conhecidos"
+MARCAR: "Mostrar arquivos, pastas e unidades ocultas"

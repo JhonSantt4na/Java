@@ -1,0 +1,12 @@
+Casos comuns de arquivos que não devem ser
+salvos pelo Git:
+• Arquivos compilados
+Linguagens compiladas (C, C++, Java, C#, etc.) geram arquivos de código compilado para executar o programa
+localmente.
+• Arquivos de bibliotecas externas usadas no projeto
+Projetos reais utilizam bibliotecas externas (programas prontos disponíveis na Internet). Por exemplo, projetos
+JavaScript com NPM tipicamente salvam uma subpasta "node_modules" na pasta do seu projeto.
+• Arquivos de configuração da sua IDE
+IDE's podem salvar uma subpasta com arquivos de configuração na pasta do projeto (exemplo: .vscode).
+• Arquivos de configuração do seu sistema
+Por exemplo, sistemas Mac podem gravar uma subpasta .ds_store na pasta do projet
