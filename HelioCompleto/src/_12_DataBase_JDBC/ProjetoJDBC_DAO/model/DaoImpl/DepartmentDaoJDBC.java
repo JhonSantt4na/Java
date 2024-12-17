@@ -1,17 +1,13 @@
 package _12_DataBase_JDBC.ProjetoJDBC_DAO.model.DaoImpl;
 
+import _12_DataBase_JDBC.PrimeiroApp.db.DbException;
 import _12_DataBase_JDBC.ProjetoJDBC_DAO.db.DB;
-import _12_DataBase_JDBC.ProjetoJDBC_DAO.db.DBException;
-import _12_DataBase_JDBC.ProjetoJDBC_DAO.model.InterfacesDao.DaoFactory;
 import _12_DataBase_JDBC.ProjetoJDBC_DAO.model.InterfacesDao.SellerDao;
 import _12_DataBase_JDBC.ProjetoJDBC_DAO.model.entities.Department;
 import _12_DataBase_JDBC.ProjetoJDBC_DAO.model.entities.Seller;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class DepartmentDaoJDBC  implements SellerDao {
 	private Connection conn;
@@ -34,8 +30,29 @@ public class DepartmentDaoJDBC  implements SellerDao {
 	}
 	
 	@Override
-	public Seller findById(Integer id) {
-		return null;
+	public Department findById(Integer id) {
+		PreparedStatement st = null;
+		ResultSet rs = null;
+		try {
+			st = conn.prepareStatement(
+				"SELECT * FROM department WHERE Id = ?");
+			st.setInt(1, id);
+			rs = st.executeQuery();
+			if (rs.next()) {
+				Department obj = new Department();
+				obj.setId(rs.getInt("Id"));
+				obj.setName(rs.getString("Name"));
+				return obj;
+			}
+			return null;
+		}
+		catch (SQLException e) {
+			throw new DbException(e.getMessage());
+		}
+		finally {
+			DB.closeStatement(st);
+			DB.closeResultSet(rs);
+		}
 	}
 	
 	private Department instantiateDepartment(ResultSet rs) throws SQLException{
