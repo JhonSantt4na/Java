@@ -1,0 +1,8 @@
+Como desfazer o último commit
+
+Desfazer último commit sem desfazer as modificações nos arquivos:
+
+git status
+git reset --soft HEAD~1
+
+--soft  = não apaga as modificações
