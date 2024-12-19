@@ -1,5 +1,29 @@
 Git status, git add e stage
 
-modified
-untracked   >    Staged   > commited
-deleted
+modified = Arquivo Modificado
+untracked = Arquivo novo não esta rastrado pelo git
+deleted = Arquivo Deletado
+
+  >
+ Primeiro vamos para o stage ou seja comita tudo salva os arquivos
+pois quando salvamos um novo commit escolhemos apenas o que vai para a nova versão
+
+Staged
+
+Adicionando Arquivos >
+git add . = "o ponto significa que é todos os arquivos "
+
+git add arquivo.html = manda somente o arquivo especifico
+"Se apertar tap ele mostra todos os arquivos ou é como se fosse um autocomplet"
+
+Removendo Arquivos >
+git reset  = Retira da area de Stage
+
+podemos remover do stage tmb arquivo unico com o comando :
+git reset NomeArquivo.txt
+
+>  commited = Manda as altrações para o git hub remoto
+com o comando:
+git push
+
+

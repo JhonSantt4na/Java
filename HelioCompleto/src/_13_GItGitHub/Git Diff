@@ -1,3 +1,7 @@
-Git diff
+Git diff arquivo.html
+ - : Removou linha
+ + : Adicionou linha
+
+
 • Comando que mostra a diferença entre arquivos modificados
 • Dica: utilizar o VS Code, que mostra graficamente as diferenças
