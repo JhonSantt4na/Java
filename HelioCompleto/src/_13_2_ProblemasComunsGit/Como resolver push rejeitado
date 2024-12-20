@@ -1,0 +1,19 @@
+Não é permitido enviar um push se seu repositório local está atrasado em
+relação ao histórico do repositório remoto! Por exemplo:
+
+github  = commit 1 + commit 2 + commit 3
+no seu comp = commit 1 + commit 2 + commit Novo 4 + commit Novo 5
+
+ou seja ate o commit 3 esta no github porem no computador ainda tem 2
+novos commit.
+
+ao fazer o git pull ele retornara o vim apetamos i para poder editar
+logo em sequida apertamos esq para sair do mod de edição
+:wq para sair e salvar
+
+Você tem que atualizar o repositório local:
+git pull <nome do remote> <nome do branch>
+
+
+
+

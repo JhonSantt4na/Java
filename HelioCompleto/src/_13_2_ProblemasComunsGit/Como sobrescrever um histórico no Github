@@ -1,0 +1,9 @@
+Como sobrescrever um histórico no Github
+
+github  = commit 1 + commit 2 + commit 3
+no seu comp = commit 1 + commit 2 + commit Novo 4 + commit Novo 5
+
+git push -f <nome do remote> <nome do branch>
+ATENÇÃO: ação destrutiva!
+
+-f  = Forçando
