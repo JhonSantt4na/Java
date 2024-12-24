@@ -23,16 +23,38 @@ public class programa {
         
         // removemos os dados apos salvar os dados:
         // Iniciando uma transação com o banco (Já que não é uma simples leitura)
-        em.getTransaction().begin();
+        //em.getTransaction().begin();
         
         // Persistindo os dados no banco 
-        em.persist(p1);
-        em.persist(p2);
-        em.persist(p3);
+        //em.persist(p1);
+        //em.persist(p2);
+        //em.persist(p3);
         
         // Confirmando as alterações
-        em.getTransaction().commit();
+        //em.getTransaction().commit();
         
+        // Buscando uma Pessoa no Banco de Dados
+        
+        // tipo pessoa e usando o find que fala que é para Pessoa class e o id que tamos procurando
+        	//Pessoa p = em.find(Pessoa.class, 2); 
+        
+        	//System.out.println(p);
+        
+        // Apagando uma pessoa
+        	// Se fizer isso aqui abaixo:
+        	// Pessoa p = new Pessoa(2,null,null); 
+        	// em.remove(p); 				
+        	// Retorna uma exceção pois ele so consegue remover uma instancia que esta monitorada ou seja
+        	// que foi adicionada recentimento ou um obj que foi buscado e ainda não fechou o EntityManager
+        	// se for criado na hora não funciona
+        
+        // Lembrando que sempre que não for busca tera que abri e confirmar uma transação
+        em.getTransaction().begin();
+        Pessoa p = em.find(Pessoa.class, 2); 
+        em.remove(p);
+        
+        
+        em.getTransaction().commit();
         // Fechando o EntityManager e a Factory
         em.close();
         emf.close();
