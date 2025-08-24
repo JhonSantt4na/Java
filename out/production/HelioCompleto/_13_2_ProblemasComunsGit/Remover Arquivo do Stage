@@ -1,0 +1,6 @@
+
+Como remover arquivos da área de stage
+
+git status
+git reset                   ou
+git reset NomeArquivo.txt

@@ -1,0 +1,24 @@
+Git checkout = muda de branch ou commit basta usar o codigo dele
+• Permite modificar temporariamente os arquivos do projeto ao estado de um dado commit
+ou branch
+
+• Código do commit, HEAD = cabeça
+• Cada commit possui um código, que pode ser utilizado para referenciar o commit
+    tem o codigo pequeno e o longo
+
+• O último commit do histórico do branch corrente também pode ser referenciado pela palavra HEAD
+
+• É possível referenciar um commit N versões antes de HEAD usando ~N, por exemplo:
+    • HEAD~1 (penúltimo commit)
+    • HEAD~2 (antepenúltimo commit)
+
+git checkout main = volta para a ultima alteração
+
+• IMPORTANTE: antes de fazer o checkout para voltar para HEAD, certifique-se de que não
+haja mudanças nos arquivos. Se você acidentalmente mudou alguma coisa, desfaça as
+modificações usando:
+
+git reset = Tirar aquivos da stage
+git clean -df = limpa
+git checkout -- . = limpar modificações
+

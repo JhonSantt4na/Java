@@ -1,0 +1,8 @@
+Volta o projeto até o ultimo commit :
+
+git status
+git reset
+git clean -df
+git checkout -- .
+
+Zera para o ultimo commit lembre de usar o git status

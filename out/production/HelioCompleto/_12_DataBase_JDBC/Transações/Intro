@@ -1,0 +1,15 @@
+// é uma operação que deve conter a consistencia do banco de dados
+	// 4 referencias que tem que ter :
+		// Atomicity = Ou acontece tudo, ou não acontece nada
+		// Consistency
+		// Isolation
+		// Durability
+
+	//ex: numa trasnferencia bancaria ou manda o dinheiro ou não manda pq se der erro no meio
+	// ou sera retirado o dinheiro ou o dinheiro não sai da conta
+
+
+	//setAutoCommit(false) = cada operação isolada sera confirmada auto se tiver true, caso esteja falsa aguarda aprovação
+	//commit() // Confirmar a transação
+	//rollback() // Desfazer o que foi feito
+

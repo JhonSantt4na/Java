@@ -1,0 +1,13 @@
+Como deletar commits e também modificações nos arquivos
+
+Voltar o projeto ao estado de um dado commit (deletar commits e alterações
+posteriores a esse commit)
+
+git status
+git reset --hard <código do commit>
+
+Voltar o projeto ao estado do penúltimo commit:
+git status
+git reset --hard HEAD~1
+
+ATENÇÃO: ação destrutiva!

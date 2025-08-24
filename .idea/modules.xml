@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Apps.iml" filepath="$PROJECT_DIR$/Apps.iml" />
       <module fileurl="file://$PROJECT_DIR$/HelioCompleto/HelioCompleto.iml" filepath="$PROJECT_DIR$/HelioCompleto/HelioCompleto.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../JavaWithPOO/JavaWithPOO.iml" filepath="$PROJECT_DIR$/../JavaWithPOO/JavaWithPOO.iml" />
       <module fileurl="file://$PROJECT_DIR$/ViradoNoJiraya/ViradoNoJiraya.iml" filepath="$PROJECT_DIR$/ViradoNoJiraya/ViradoNoJiraya.iml" />
     </modules>
   </component>

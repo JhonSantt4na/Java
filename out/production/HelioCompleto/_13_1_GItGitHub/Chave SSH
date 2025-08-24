@@ -1,0 +1,8 @@
+Configurar chave SSH para o Github
+SSH é um protocolo para comunicação de dados com segurança.
+O Github aboliu a autenticação somente com usuário e senha.
+A ideia básica é cadastrar previamente quais computadores podem acessar o
+Github em seu nome. Outros computadores não conseguem acessar.
+Para isto você deve:
+(1) Gerar uma chave SSH no seu computador
+(2) Cadastrar essa chave no seu Github
