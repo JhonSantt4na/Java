@@ -72,7 +72,6 @@ public class variaveis_tipos {
 		System.out.println("long: " +  Long.MIN_VALUE + " a " + Long.MAX_VALUE);       // -9223372036854775808 a 9223372036854775807
 		
 		
-		
 		/**
 		 * @Pontoflutuante numeros com parte fracionada ou com parte decimal
 		 * 		Na ordem de tamanho:
@@ -88,8 +87,8 @@ public class variaveis_tipos {
 		double d1 = 54.43;
 		
 		
-		System.out.println("float: " +  Float.MIN_VALUE + " a " + Float.MAX_VALUE);		//1.4E-45 a 3.4028235E38
-		System.out.println("double: " +  Double.MIN_VALUE + " a " + Double.MAX_VALUE);  //4.9E-324 a 1.7976931348623157E308
+		System.out.println("float: " + Float.MIN_VALUE + " a " + Float.MAX_VALUE);        //1.4E-45 a 3.4028235E38
+		System.out.println("double: " + Double.MIN_VALUE + " a " + Double.MAX_VALUE);  //4.9E-324 a 1.7976931348623157E308
 		
 		
 		/**

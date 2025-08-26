@@ -26,6 +26,7 @@ public class Main {
 		 * @param nomeParâmetro → descreve cada parâmetro.
 		 * @return → descreve o valor retornado.*
 		 * @throws ou @exception → descreve exceções lançadas.
+		 * @Exception
 		 * */
 		
 		// Este e outro metodo de comentario
