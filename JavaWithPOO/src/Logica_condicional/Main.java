@@ -1,4 +1,4 @@
-package LogicaCondicional;
+package Logica_condicional;
 
 public class Main {
 	public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package comentarios_ComandoDeSaida_Pacotes_01.escola;
+package Comentarios_comando_de_saida_pacotes_01.escola;
 
 public class Aluno {
 	public void matricular(){

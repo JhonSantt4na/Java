@@ -1,4 +1,4 @@
-package conversãoDeTipos;
+package Conversão_de_tipos;
 
 public class Main {
 	public static void main(String[] args) {

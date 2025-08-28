@@ -1,4 +1,4 @@
-package variaveis_Tipos_Operadores_02;
+package Variaveis_tipos_operadores_02;
 
 public class operadores {
 	public static void main(String[] args) {

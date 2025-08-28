@@ -1,6 +1,6 @@
-package comentarios_ComandoDeSaida_Pacotes_01;
+package Comentarios_comando_de_saida_pacotes_01;
 
-import comentarios_ComandoDeSaida_Pacotes_01.curso.Aluno;
+import Comentarios_comando_de_saida_pacotes_01.curso.Aluno;
 
 public class Main {
 	public static void main(String[] args) {
@@ -41,7 +41,7 @@ public class Main {
 		Aluno a1 = new Aluno();
 		a1.matricular();
 		
-		comentarios_ComandoDeSaida_Pacotes_01.escola.Aluno a2 = new comentarios_ComandoDeSaida_Pacotes_01.escola.Aluno();
+		Comentarios_comando_de_saida_pacotes_01.escola.Aluno a2 = new Comentarios_comando_de_saida_pacotes_01.escola.Aluno();
 		a2.matricular();
 	
 	}
