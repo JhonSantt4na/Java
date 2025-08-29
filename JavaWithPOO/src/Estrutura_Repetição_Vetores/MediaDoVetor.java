@@ -98,22 +98,22 @@ public class MediaDoVetor {
 		int qtdePrimos = 0;
 		int valorAtual = 1;
 		
-		boolean ehPrimo = true;
 		while(qtdePrimos < primos.length) {
-			for (int i = 2; i < valorAtual; i++) {
+			boolean ehPrimo = true;
+			for (int i = 2; i < valorAtual; i++) { // Buscando divisores
 				if (valorAtual % i == 0){
 					ehPrimo = false;
 					break;
 				}
 			}
-			
+			if (ehPrimo) {
+				qtdePrimos ++;
+				primos[qtdePrimos-1] = valorAtual;
+				System.out.println("Número primo encontrados: " + valorAtual);
+			}
+			valorAtual++;
 		}
 		
-		if (ehPrimo) {
-			qtdePrimos ++;
-			primos[qtdePrimos-1] = valorAtual;
-			System.out.println("Número primo encontrados: " + valorAtual);
-		}
 	}
 	
 	private static void clearScreen() throws IOException, InterruptedException {
