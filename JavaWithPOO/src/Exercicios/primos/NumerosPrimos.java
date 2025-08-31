@@ -12,7 +12,6 @@ public class NumerosPrimos {
 		
 		System.out.print("Digite um número inteiro:");
 		int num = sc.nextInt();
-		
 		int qtd_divisores_positivos = 0;
 		
 		for(int i = 2; i < num; i++){

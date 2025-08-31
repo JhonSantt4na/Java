@@ -25,7 +25,7 @@ public class Retangulo {
 		Thread.sleep(1000);
 		double sum = width * height;
 		
-		System.out.format("A área do Retângulo é : %dm²", (int)sum);
+		System.out.format("A área do Retângulo é : %fm²", sum);
 		sc.close();
 	}
 }

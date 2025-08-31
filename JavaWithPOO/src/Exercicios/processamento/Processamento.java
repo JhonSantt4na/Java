@@ -17,7 +17,7 @@ public class Processamento {
 		
 		ArrayList<Integer> elementos_pares = new ArrayList<>(5);
 		ArrayList<Integer> elementos_impares = new ArrayList<>(5);
-		int maior = 0, menor = 99999;
+		int maior = Integer.MIN_VALUE, menor = Integer.MAX_VALUE;
 		float media;
 		
 		for(int i = 0; i < elementos.length; i++) {

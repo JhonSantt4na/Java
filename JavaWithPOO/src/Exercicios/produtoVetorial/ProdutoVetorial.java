@@ -8,7 +8,7 @@ public class ProdutoVetorial {
 	
 	public static void main(String[] args) {
 		
-		int qtd = 10;
+		int qtd = 3;
 		
 		int[] vetor01 = new int[qtd];
 		int[] vetor02 = new int[qtd];

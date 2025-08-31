@@ -17,10 +17,11 @@ public class Notas {
 		ArrayList<Float> medias = new ArrayList<Float>(10);
 		
 		for (int i = 1; i < qtdAlunos; i++) {
-			System.out.print("Qual a primeira Nota do aluno " + i + ": ");
+			
+			System.out.print("Qual a primeira Nota do aluno " + i + "(0 á 10) : ");
 			float nota1 = sc.nextFloat();
 			
-			System.out.print("Qual a Segunda Nota do aluno " + i + ": ");
+			System.out.print("Qual a Segunda Nota do aluno " + i + " (0 á 10) : ");
 			float nota2 = sc.nextFloat();
 			System.out.println();
 			
