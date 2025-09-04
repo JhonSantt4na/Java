@@ -1,6 +1,6 @@
 package Strings;
 
-public class ManipulandoStrings {
+public class RetornandoNovasStrings {
 	
 	/**
 	 * == : Compara as referências não o conteudo de memória
@@ -75,12 +75,30 @@ public class ManipulandoStrings {
 		System.out.println(p1.toUpperCase());
 		
 		/**
-		 * @.trim() ->
-		 * @.split()_and_.trim()
-		 * @.charAt()
-		 * @substring()
-		 * @String.valueOf(object) -> converte qualquer objeto para tipo string com o metodo to String no objeto
+		 * @.trim() -> remove os espaços vazio das laterais
+		 * @.split()_and_.trim() -> divide a string em outras ‘strings’ considerando um divisor qualquer
+		 * @.charAt() -> Retorna um character na posição escolhida
+		 * @substring() -> Retorna parte de uma String
+		 * @String.valueOf(object) -> Metodo Static da classe String que converte qualquer objeto para tipo string com o metodo to String no objeto
 		 * */
 		
+		// .trim()
+		String s22 = "   POO com Java    ";
+		System.out.println(s22.trim());
+		
+		// .split e trim()
+		String[] ps = s22.trim().split(" "); // Separando por espaço vazio
+		System.out.println(ps[0] + ps[1] + ps[2]); //"{ POO, com, Java}"
+		
+		// .charAt()
+		char c1 = s22.trim().charAt(0);   // Retorna o P
+		System.out.println(c1);
+		
+		// .substring(pos inicial, pos final)
+		System.out.println(s22.trim().substring(0,3));  // Retorna POO
+		
+		// @String.valueOf(object)
+		int num = 12;
+		System.out.println(String.valueOf(num));
 	}
 }
