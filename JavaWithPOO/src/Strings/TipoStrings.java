@@ -64,7 +64,7 @@ public class TipoStrings {
 		// Tempo para criar 999999999 Strings literais = 3ms.
 		// Tempo para criar 999999999 Objetos Strings = 49ms.
 		
-		//compararStings();
+		compararStings();
 		
 		
 	}
