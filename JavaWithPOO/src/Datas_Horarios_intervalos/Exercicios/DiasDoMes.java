@@ -1,6 +1,7 @@
 package Datas_Horarios_intervalos.Exercicios;
 
 import java.time.LocalDate;
+import java.time.Month;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
@@ -15,9 +16,9 @@ public class DiasDoMes {
 		System.out.print("Digit one Year (ex: 2025):");
 		int strUser = sc.nextInt();
 		
-		for (int i = 1; i < 13; i++){
-			YearMonth mesAtual = YearMonth.of(strUser,i);
-			System.out.printf("%s : %d days%n",mesAtual.getMonth(), mesAtual.lengthOfMonth());
+		for (Month mes : Month.values()){
+			YearMonth mesAtual = YearMonth.of(strUser,mes);
+			System.out.printf("%s : %d days%n",mes, mesAtual.lengthOfMonth());
 		}
 		
 		sc.close();

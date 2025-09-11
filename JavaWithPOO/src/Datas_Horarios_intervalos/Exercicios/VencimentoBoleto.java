@@ -3,6 +3,8 @@ package Datas_Horarios_intervalos.Exercicios;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalAdjuster;
+import java.time.temporal.TemporalAdjusters;
 import java.util.Scanner;
 
 public class VencimentoBoleto {
@@ -21,16 +23,22 @@ public class VencimentoBoleto {
 		DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("EEEE, dd 'de' MMMM 'de' yyyy");
 
 		LocalDate userDate = LocalDate.parse(strData, fmt1);
+		//DayOfWeek weekDate = userDate.getDayOfWeek();
 		
-		DayOfWeek weekDate = userDate.getDayOfWeek();
-		
-		if(weekDate == DayOfWeek.SATURDAY) {
-			System.out.println("Seu Boleto será no Sábado Próximo Dia Util: " + userDate.plusDays(2).format(dtf2));
-		} else if(weekDate == DayOfWeek.SUNDAY){
-			System.out.println("Seu Boleto Cai no Domingo, Próximo Dia Util: " + userDate.plusDays(1).format(dtf2));
-		} else {
-			System.out.println("Seu Boleto cai no dia: " + userDate.format(dtf2));
+		if ((userDate.getDayOfWeek() == DayOfWeek.SATURDAY) || (userDate.getDayOfWeek() == DayOfWeek.SUNDAY)){
+			userDate = userDate.with(TemporalAdjusters.next(DayOfWeek.MONDAY));
 		}
+		
+		
+		System.out.printf("O Pagamento deve ser feito até %s.",userDate);
+		
+		//if(weekDate == DayOfWeek.SATURDAY) {
+			//System.out.println("Seu Boleto será no Sábado Próximo Dia Util: " + userDate.plusDays(2).format(dtf2));
+		//} else if(weekDate == DayOfWeek.SUNDAY){
+			//System.out.println("Seu Boleto Cai no Domingo, Próximo Dia Util: " + userDate.plusDays(1).format(dtf2));
+		//} else {
+			//System.out.println("Seu Boleto cai no dia: " + userDate.format(dtf2));
+		//}
 		
 		sc.close();
 	}
