@@ -1,12 +1,10 @@
 package Collection;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
 
-public class Coleções {
+public class ArrayList_LinkedList {
 	/**
 	 * Um vetor é imutável, se for adicionar um novo elemento ele cria um vetor assim como string que é um vetor de char
 	 * antes do jdk1.2 eram array vetor e hashtable porem dificultava a programação:
@@ -66,8 +64,5 @@ public class Coleções {
 		 * se for para usar a coleção percorrendo completamente sem acessar pos aleatórias
 		 * e for adicionar e remover elementos no início e no meio
 		 * */
-		
-		
-		
 	}
 }
