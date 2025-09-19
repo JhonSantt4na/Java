@@ -116,8 +116,6 @@ public class variaveis_tipos {
 		System.out.println("Vai conceder desconto ? " + concederDesconto);
 		
 		
-		
-		
 		// Exemplo prático
 		
 		int v1 = 100;
@@ -129,9 +127,5 @@ public class variaveis_tipos {
 		
 		// Isso acontece porque atribuição de valores primitivos ocorrem por valor e não por referência
 	}
-	
-	
-	
-	
 	
 }
