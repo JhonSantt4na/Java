@@ -13,21 +13,37 @@ public class GlobalExceptionHandler {
 	
 	@ExceptionHandler(NotFoundException.class)
 	public ResponseEntity<Object> handleNotFound(NotFoundException ex) {
+		
 		Map<String, Object> body = new LinkedHashMap<>();
 		body.put("timestamp", LocalDateTime.now());
 		body.put("status", HttpStatus.NOT_FOUND.value());
 		body.put("error", "Resource Not Found");
 		body.put("message", ex.getMessage());
+		
 		return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
+	}
+	
+	@ExceptionHandler(BusinessException.class)
+	public ResponseEntity<Object> handleBusinessException(BusinessException ex) {
+		
+		Map<String, Object> body = new LinkedHashMap<>();
+		body.put("timestamp", LocalDateTime.now());
+		body.put("status", HttpStatus.UNPROCESSABLE_ENTITY.value());
+		body.put("error", "Business Rule Violation");
+		body.put("message", ex.getMessage());
+		
+		return new ResponseEntity<>(body, HttpStatus.UNPROCESSABLE_ENTITY);
 	}
 	
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<Object> handleGenericException(Exception ex) {
+		
 		Map<String, Object> body = new LinkedHashMap<>();
 		body.put("timestamp", LocalDateTime.now());
 		body.put("status", HttpStatus.INTERNAL_SERVER_ERROR.value());
 		body.put("error", "Error Internal Server");
 		body.put("message", ex.getMessage());
+		
 		return new ResponseEntity<>(body, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 }

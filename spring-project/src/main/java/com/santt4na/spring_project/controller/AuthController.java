@@ -2,7 +2,7 @@ package com.santt4na.spring_project.controller;
 
 import com.santt4na.spring_project.model.User;
 import com.santt4na.spring_project.security.JwtUtil;
-import com.santt4na.spring_project.service.UserService;
+import com.santt4na.spring_project.service.impl.UserServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,9 +16,9 @@ import java.util.Optional;
 @RequestMapping("/auth")
 public class AuthController {
 	
-	private final UserService userService;
+	private final UserServiceImpl userService;
 	
-	public AuthController(UserService userService) {
+	public AuthController(UserServiceImpl userService) {
 		this.userService = userService;
 	}
 	

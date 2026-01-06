@@ -1,0 +1,123 @@
+Criar entidades
+Criar enums + validações básicas
+Implementar regras no service
+Depois expor via controller
+
+
+
+🔹 EPIC 1 — Modelagem do Domínio
+Tarefa 1.1 — Criar entidade Task
+Campos mínimos:
+id
+title
+description
+status (TODO, IN_PROGRESS, BLOCKED, DONE)
+priority (LOW, MEDIUM, HIGH, CRITICAL)
+dueDate
+createdAt / updatedAt
+responsibleUser (ManyToOne User)
+Critérios
+Nenhum campo obrigatório pode ser nulo
+Prioridade default = MEDIUM
+Status inicial = TODO
+
+Tarefa 1.2 — Criar entidade TaskHistory
+Registra qualquer mudança relevante:
+data
+usuário que executou
+statusAnterior
+statusNovo
+observação
+Critérios
+Toda mudança de status deve gerar histórico
+Persistir via service (nada no controller)
+
+
+
+
+
+
+🔹 EPIC 2 — Regras de Workflow de Status
+Tarefa 2.1 — Implementar transições permitidas
+Permitido:
+TODO → IN_PROGRESS
+IN_PROGRESS → BLOCKED
+IN_PROGRESS → DONE
+BLOCKED → IN_PROGRESS
+
+Proibido
+TODO → DONE
+DONE → qualquer outro status
+
+Critérios
+Lançar exceção de negócio ao violar regra
+Histórico deve registrar o motivo
+Trefa 2.2 — Regra para prioridade CRITICAL
+Quando prioridade = CRITICAL
+exigir justification
+salvar no histórico
+
+
+
+
+
+🔹 EPIC 3 — Regras Operacionais
+Tarefa 3.1 — Limitar tarefas ativas por usuário
+Um usuário não pode ter mais que N tarefas ativas
+status ativos: TODO, IN_PROGRESS, BLOCKED
+Valor padrão N = 5
+Critérios
+lançar exceção clara
+mensagem amigável
+
+Tarefa 3.2 — Bloqueio automático por prazo vencido
+Se dueDate < now() e tarefa não estiver DONE
+mudar para BLOCKED
+registrar no histórico
+Critérios
+Executado no service (não no controller)
+Preparar método que pode ser chamado por job futuramente
+
+
+
+
+
+
+🔹 EPIC 4 — API e Casos de Uso
+Tarefa 4.1 — Criar endpoints
+Criar tarefa
+Atualizar tarefa
+Listar tarefas por:
+usuário
+status
+prioridade
+Mudar status (endpoint específico)
+Atribuir responsável
+Consultar histórico da tarefa
+
+
+
+
+
+🔹 EPIC 5 — Validações e Boas Práticas
+Tarefa 5.1 — Usar DTOs
+TaskCreateDTO
+TaskUpdateDTO
+TaskStatusChangeDTO
+Nada de expor entidade diretamente.
+
+Tarefa 5.2 — Adicionar Bean Validation
+title min 3 chars
+description max 2000 chars
+dueDate > now()
+priority obrigatória
+responsible obrigatório para IN_PROGRESS e DONE
+
+Tarefa 6.1 — Criar testes unitários do service
+Testar transições válidas
+Testar transições proibidas
+Testar limite de tarefas ativas
+Testar prioridade crítica com e sem justificativa
+
+
+
