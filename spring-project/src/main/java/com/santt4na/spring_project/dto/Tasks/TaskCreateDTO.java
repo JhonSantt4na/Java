@@ -1,6 +1,8 @@
 package com.santt4na.spring_project.dto.Tasks;
 
 import com.santt4na.spring_project.enums.Priority;
+import com.santt4na.spring_project.enums.Status;
+import com.santt4na.spring_project.validation.ValidResponsible;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -17,6 +19,10 @@ public record TaskCreateDTO(
 	@NotNull(message = "Priority cannot be null.")
 	Priority priority,
 	
+	Status status,
+	
 	LocalDateTime dueDate,
+	
+	@ValidResponsible(statusAccept = {Status.IN_PROGRESS, Status.DONE})
 	Long responsibleUserId
 ) {}

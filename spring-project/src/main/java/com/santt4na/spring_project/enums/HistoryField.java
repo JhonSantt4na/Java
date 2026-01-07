@@ -5,6 +5,7 @@ public enum HistoryField {
 	PRIORITY,
 	RESPONSIBLE_USER,
 	TITLE,
+	TASK,
 	DESCRIPTION,
 	DUE_DATE
 }

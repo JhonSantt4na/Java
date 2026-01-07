@@ -2,6 +2,7 @@ package com.santt4na.spring_project.controller;
 
 import com.santt4na.spring_project.model.User;
 import com.santt4na.spring_project.security.JwtUtil;
+import com.santt4na.spring_project.service.UserService;
 import com.santt4na.spring_project.service.impl.UserServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +17,7 @@ import java.util.Optional;
 @RequestMapping("/auth")
 public class AuthController {
 	
-	private final UserServiceImpl userService;
+	private final UserService userService;
 	
 	public AuthController(UserServiceImpl userService) {
 		this.userService = userService;
@@ -24,7 +25,7 @@ public class AuthController {
 	
 	@PostMapping("/register")
 	public ResponseEntity<?> register(@RequestBody Map<String,String> request){
-		User user = userService.RegisterUser(request.get("username"), "password");
+		User user = userService.registerUser(request.get("username"), "password");
 		return ResponseEntity.ok(user);
 	}
 	

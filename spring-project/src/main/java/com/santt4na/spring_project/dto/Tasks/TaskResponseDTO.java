@@ -1,7 +1,6 @@
 package com.santt4na.spring_project.dto.Tasks;
 
-import com.santt4na.spring_project.dto.TaskHistory.TaskHistoryResponseDTO;
-import com.santt4na.spring_project.dto.UserSummaryDTO;
+import com.santt4na.spring_project.dto.TaskHistory.TaskHistoryDTO;
 import com.santt4na.spring_project.enums.Priority;
 import com.santt4na.spring_project.enums.Status;
 import java.time.LocalDateTime;
@@ -16,6 +15,6 @@ public record TaskResponseDTO(
 	LocalDateTime dueDate,
 	LocalDateTime createdAt,
 	LocalDateTime updatedAt,
-	UserSummaryDTO responsibleUser,
-	List<TaskHistoryResponseDTO> history
+	TaskUserDTO responsibleUser,
+	List<TaskHistoryDTO> history
 ) {}

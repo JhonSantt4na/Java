@@ -7,6 +7,7 @@ Depois expor via controller
 
 🔹 EPIC 1 — Modelagem do Domínio
 Tarefa 1.1 — Criar entidade Task
+
 Campos mínimos:
 id
 title
@@ -16,10 +17,12 @@ priority (LOW, MEDIUM, HIGH, CRITICAL)
 dueDate
 createdAt / updatedAt
 responsibleUser (ManyToOne User)
+
 Critérios
 Nenhum campo obrigatório pode ser nulo
 Prioridade default = MEDIUM
 Status inicial = TODO
+
 
 Tarefa 1.2 — Criar entidade TaskHistory
 Registra qualquer mudança relevante:
@@ -31,10 +34,6 @@ observação
 Critérios
 Toda mudança de status deve gerar histórico
 Persistir via service (nada no controller)
-
-
-
-
 
 
 🔹 EPIC 2 — Regras de Workflow de Status
@@ -52,12 +51,12 @@ DONE → qualquer outro status
 Critérios
 Lançar exceção de negócio ao violar regra
 Histórico deve registrar o motivo
+
+
 Trefa 2.2 — Regra para prioridade CRITICAL
 Quando prioridade = CRITICAL
 exigir justification
 salvar no histórico
-
-
 
 
 
@@ -77,7 +76,6 @@ registrar no histórico
 Critérios
 Executado no service (não no controller)
 Preparar método que pode ser chamado por job futuramente
-
 
 
 

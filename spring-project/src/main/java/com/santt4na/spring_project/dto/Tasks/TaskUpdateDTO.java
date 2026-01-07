@@ -7,8 +7,5 @@ import java.time.LocalDateTime;
 public record TaskUpdateDTO(
 	String title,
 	String description,
-	Status status,
-	Priority priority,
-	LocalDateTime dueDate,
-	Long responsibleUserId
+	Priority priority
 ) {}
