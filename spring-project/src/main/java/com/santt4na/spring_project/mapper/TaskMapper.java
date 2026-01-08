@@ -5,6 +5,7 @@ import com.santt4na.spring_project.dto.Tasks.TaskResponseDTO;
 import com.santt4na.spring_project.dto.Tasks.TaskUserDTO;
 import com.santt4na.spring_project.model.Task;
 import com.santt4na.spring_project.model.TaskHistory;
+import com.santt4na.spring_project.model.User;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -37,15 +38,14 @@ public class TaskMapper {
 		);
 	}
 	
-	private TaskHistoryDTO toHistoryDTO(TaskHistory h) {
+	private TaskHistoryDTO toHistoryDTO(TaskHistory h, User actor) {
 		return new TaskHistoryDTO(
 			h.getId(),
 			h.getFieldChanged(),
 			h.getOldValue(),
 			h.getNewValue(),
 			h.getObservation(),
-			h.getChangedAt(),
-			h.getChangedBy().getUsername()
+			h.getChangedAt()
 		);
 	}
 }
