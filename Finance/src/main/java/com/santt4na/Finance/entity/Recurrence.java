@@ -19,6 +19,14 @@ public class Recurrence {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@Enumerated(EnumType.STRING)
+	@Column(nullable = false)
 	private Frequency frequency;
-	private boolean active;
+	
+	@Column(nullable = false)
+	private boolean active = true;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "transaction_id", nullable = false)
+	private Transaction transaction;
 }
