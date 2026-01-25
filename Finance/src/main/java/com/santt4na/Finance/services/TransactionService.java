@@ -16,6 +16,8 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.YearMonth;
+import java.util.List;
 import java.util.Objects;
 
 @Log
@@ -112,18 +114,15 @@ public class TransactionService {
 	};
 	
 	
-	List<Transaction> listTransactionsByMonth(
-		UUID userId,
-		YearMonth month
-	);
+	public List<Transaction> listTransactionsByMonth(Long userId, YearMonth month){
+		return List.of();
+	};
 	
-	void markAsPaid(
-		UUID transactionId,
-		UUID userId
-	);
+	public void markAsPaid(Long transactionId, Long userId){
 	
-	void generateNextMonthRecurringTransactions(
-		UUID userId
-	);
+	};
 	
+	public void generateNextMonthRecurringTransactions(Long userId){
+	
+	};
 }
