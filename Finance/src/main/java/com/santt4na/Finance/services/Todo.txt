@@ -1,0 +1,235 @@
+//Responsabilidades:
+//Criar transação
+//Validar:
+//	usuário
+//	conta
+//	categoria (se já criou)
+//tipo (RECEITA/DESPESA)
+//Atualizar saldo da conta
+//Lidar com recorrência
+
+
+## 🟢 `createTransaction(UUID userId, UUID accountId, Transaction transaction)`
+
+### Checklist de responsabilidades:
+
+1. **Validar entrada**
+
+   * Verificar se `userId` não é nulo
+   * Verificar se `accountId` não é nulo
+   * Verificar se `transaction` não é nula
+   * Validar campos obrigatórios da transação:
+
+     * `amount`
+     * `date`
+     * `type`
+     * `account` (ou será setada depois)
+     * `user` (ou será setado depois)
+
+2. **Buscar usuário**
+
+   * Buscar usuário pelo `userId`
+   * Lançar exceção se não existir
+
+3. **Buscar conta**
+
+   * Buscar conta pelo `accountId`
+   * Garantir que a conta pertence ao usuário
+   * Lançar exceção se não pertencer
+
+4. **Associar entidades**
+
+   * Setar `transaction.user`
+   * Setar `transaction.account`
+   * Definir `status` inicial (ex: `PENDING` ou `OPEN`)
+
+5. **Tratar recorrência (se existir)**
+
+   * Verificar se `transaction.getRecurrence()` não é nulo
+   * Validar frequência
+   * Ativar recorrência se aplicável
+
+6. **Salvar transação**
+
+   * Persistir a transação no banco
+
+7. **Atualizar saldo da conta**
+
+   * Se transação for do tipo:
+
+     * `EXPENSE` → subtrair valor
+     * `INCOME` → somar valor
+   * Usar `AccountService.updateBalance`
+
+8. **Log**
+
+   * Logar criação da transação
+   * Logar ID da transação criada
+   * Logar usuário e conta envolvidos
+
+9. **Retorno**
+
+   * Retornar a transação persistida
+
+---
+
+## 🟡 `listTransactionsByMonth(UUID userId, YearMonth month)`
+
+### Checklist de responsabilidades:
+
+1. **Validar entrada**
+
+   * Verificar se `userId` não é nulo
+   * Verificar se `month` não é nulo
+
+2. **Buscar usuário**
+
+   * Confirmar que o usuário existe
+   * Lançar exceção se não existir
+
+3. **Calcular intervalo de datas**
+
+   * `startDate = month.atDay(1)`
+   * `endDate = month.atEndOfMonth()`
+
+4. **Buscar transações**
+
+   * Buscar transações do usuário dentro do intervalo
+   * Filtrar por data (`BETWEEN`)
+
+5. **Ordenação**
+
+   * Ordenar por data (ASC ou DESC)
+   * Opcional: ordenar por tipo ou status
+
+6. **Log**
+
+   * Logar usuário
+   * Logar mês consultado
+   * Logar quantidade de registros retornados
+
+7. **Retorno**
+
+   * Retornar lista de transações
+
+---
+
+## 🔵 `markAsPaid(UUID transactionId, UUID userId)`
+
+### Checklist de responsabilidades:
+
+1. **Validar entrada**
+
+   * Verificar se `transactionId` não é nulo
+   * Verificar se `userId` não é nulo
+
+2. **Buscar transação**
+
+   * Buscar transação pelo ID
+   * Lançar exceção se não existir
+
+3. **Validar pertencimento**
+
+   * Verificar se a transação pertence ao usuário
+   * Lançar exceção se não pertencer
+
+4. **Validar status atual**
+
+   * Garantir que não esteja já como `PAID`
+   * Evitar pagamento duplicado
+
+5. **Atualizar status**
+
+   * Setar `status = PAID`
+
+6. **Atualizar saldo**
+
+   * Aplicar impacto financeiro:
+
+     * Despesa → subtrair
+     * Receita → somar
+
+7. **Salvar transação**
+
+   * Persistir alteração
+
+8. **Log**
+
+   * Logar pagamento efetuado
+   * Logar ID da transação
+   * Logar valor
+
+9. **Retorno**
+
+   * Método `void`, apenas efeito colateral
+
+---
+
+## 🟣 `generateNextMonthRecurringTransactions(UUID userId)`
+
+### Checklist de responsabilidades:
+
+1. **Validar entrada**
+
+   * Verificar se `userId` não é nulo
+
+2. **Buscar usuário**
+
+   * Confirmar existência do usuário
+
+3. **Buscar transações recorrentes**
+
+   * Buscar transações do usuário:
+
+     * Com recorrência ativa
+     * Status compatível (ex: `PAID` ou `OPEN`)
+
+4. **Iterar transações**
+   Para cada transação recorrente:
+
+   * Calcular próxima data (via `RecurrenceService`)
+   * Ignorar se frequência for `ONCE`
+   * Ignorar se data já foi gerada
+
+5. **Criar nova transação**
+
+   * Copiar:
+
+     * `amount`
+     * `description`
+     * `type`
+     * `account`
+     * `user`
+   * Setar nova `date`
+   * Setar status inicial (`PENDING`)
+
+6. **Salvar nova transação**
+
+   * Persistir no banco
+
+7. **Atualizar data base**
+
+   * Atualizar data da transação original
+   * Persistir atualização
+
+8. **Log**
+
+   * Logar geração automática
+   * Logar ID original e novo ID
+   * Logar frequência
+
+9. **Retorno**
+
+   * Método `void`
+   * Apenas processamento interno
+
+---
+
+## 🧠 Observação de Arquiteto (importante)
+
+Seu `TransactionService` deve ser:
+
+* **Orquestrador**
+* Não conter regra de recorrência pesada
+* Delegar cálculo de datas ao `RecurrenceService`
+* Delegar saldo ao `AccountService`
