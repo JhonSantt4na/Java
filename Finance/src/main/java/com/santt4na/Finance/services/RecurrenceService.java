@@ -16,7 +16,11 @@ public class RecurrenceService {
 	private final TransactionRepository transactionRepository;
 	private final AccountService accountService;
 	
-	public void processRecurringTransactions(LocalDate today) {
+	public void processRecurringTransactions(LocalDate today) throws Exception {
+		
+		if (today == null) {
+			throw new IllegalArgumentException("Date cannot be null");
+		}
 		
 		List<Transaction> recurringTransactions =
 			transactionRepository.findAllActiveRecurring();
@@ -25,7 +29,7 @@ public class RecurrenceService {
 			
 			LocalDate nextDate = calculateNextDate(transaction);
 			
-			if (!nextDate.equals(today)) {
+			if (!nextDate.isEqual(today)) {
 				continue;
 			}
 			
@@ -33,19 +37,16 @@ public class RecurrenceService {
 			newTransaction.setDescription(transaction.getDescription());
 			newTransaction.setAmount(transaction.getAmount());
 			newTransaction.setDate(today);
-			newTransaction.setAccount(transaction.getAccount());
 			newTransaction.setType(transaction.getType());
-			newTransaction.setRecurrence(transaction.getRecurrence());
+			newTransaction.setAccount(transaction.getAccount());
 			
 			transactionRepository.save(newTransaction);
 			
-			// Atualiza saldo da conta
 			accountService.updateBalance(
 				transaction.getAccount(),
 				transaction.getAmount()
 			);
 			
-			// Atualiza a data base da transação
 			transaction.setDate(today);
 			transactionRepository.save(transaction);
 		}
@@ -70,6 +71,7 @@ public class RecurrenceService {
 		}
 		
 		return switch (recurrence.getFrequency()) {
+			case ONCE -> null;
 			case DAILY -> lastDate.plusDays(1);
 			case WEEKLY -> lastDate.plusWeeks(1);
 			case MONTHLY -> adjustMonthlyDate(lastDate);
@@ -79,11 +81,13 @@ public class RecurrenceService {
 	
 	private LocalDate adjustMonthlyDate(LocalDate baseDate) {
 		LocalDate nextMonth = baseDate.plusMonths(1);
-		int day = Math.min(baseDate.getDayOfMonth(), nextMonth.lengthOfMonth());
+		int day = Math.min(
+			baseDate.getDayOfMonth(),
+			nextMonth.lengthOfMonth()
+		);
 		return nextMonth.withDayOfMonth(day);
 	}
 }
-
 //Gerar transações futuras
 //Calcular próxima data
 //Executar recorrências automaticamente

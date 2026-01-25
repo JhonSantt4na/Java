@@ -43,4 +43,6 @@ public class Transaction {
 	@JoinColumn(name = "account_id")
 	private Account account;
 	
+	@OneToOne(mappedBy = "transaction", cascade = CascadeType.ALL)
+	private Recurrence recurrence;
 }

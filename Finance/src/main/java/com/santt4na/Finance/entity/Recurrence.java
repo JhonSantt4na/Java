@@ -1,5 +1,6 @@
 package com.santt4na.Finance.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.santt4na.Finance.Enums.Frequency;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
