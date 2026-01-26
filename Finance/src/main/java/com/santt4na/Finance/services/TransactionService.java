@@ -2,6 +2,7 @@ package com.santt4na.Finance.services;
 
 import com.santt4na.Finance.Enums.Frequency;
 import com.santt4na.Finance.Enums.Status;
+import com.santt4na.Finance.Enums.TypeTransaction;
 import com.santt4na.Finance.entity.Account;
 import com.santt4na.Finance.entity.Recurrence;
 import com.santt4na.Finance.entity.Transaction;
@@ -12,10 +13,12 @@ import com.santt4na.Finance.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.extern.java.Log;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.YearMonth;
 import java.util.List;
 import java.util.Objects;
@@ -80,29 +83,24 @@ public class TransactionService {
 			newTransaction.setRecurrence(newRecurrence);
 		}
 		
-		BigDecimal amount = newTransaction.getAmount();
+		BigDecimal amount = transaction.getAmount();
 		
 		if (amount == null || amount.compareTo(BigDecimal.ZERO) <= 0) {
 			throw new IllegalArgumentException("Transaction amount must be greater than zero");
 		}
 		
-		if (newTransaction.getStatus() == Status.PAID) {
-			BigDecimal signedAmount;
-			
-			switch (newTransaction.getType()) {
-				case INCOME -> signedAmount = amount;
-				case EXPENSE -> signedAmount = amount.negate();
-				default -> throw new IllegalStateException("Invalid transaction type");
-			}
-			
-			accountService.updateBalance(
-				newTransaction.getAccount(),
-				signedAmount
-			);
-			
-			log.info("Account balance updated. Account : " + newTransaction.getAccount().getId()
-				+", Amount : " + signedAmount);
+		BigDecimal signedAmount;
+		
+		switch (transaction.getType()) {
+			case INCOME -> signedAmount = amount;
+			case EXPENSE -> signedAmount = amount.negate();
+			default -> throw new IllegalStateException("Invalid transaction type");
 		}
+		
+		accountService.updateBalance(
+			transaction.getAccount(),
+			signedAmount
+		);
 		
 		Transaction savedTransaction = transactionRepository.save(newTransaction);
 		log.info(
@@ -113,16 +111,116 @@ public class TransactionService {
 		return savedTransaction;
 	};
 	
-	
 	public List<Transaction> listTransactionsByMonth(Long userId, YearMonth month){
 		return List.of();
 	};
 	
-	public void markAsPaid(Long transactionId, Long userId){
-	
-	};
+	@Transactional
+	public void markAsPaid(Long transactionId, Long userId) throws Exception {
+		
+		if (transactionId == null || userId == null) {
+			throw new IllegalArgumentException("TransactionId and UserId cannot be null");
+		}
+		
+		Transaction transaction = transactionRepository.findById(transactionId)
+			.orElseThrow(() ->
+				new RuntimeException("Transaction not found with id: " + transactionId));
+		
+		User user = userRepository.findById(userId)
+			.orElseThrow(() ->
+				new RuntimeException("User not found with id: " + userId));
+		
+		if (!Objects.equals(transaction.getUser().getId(), user.getId())) {
+			throw new RuntimeException("This account is not associated with the user");
+		}
+		
+		if (transaction.getStatus() == Status.PAID) {
+			throw new IllegalStateException("Transaction is already paid");
+		}
+		
+		BigDecimal amount = transaction.getAmount();
+		
+		if (amount == null || amount.compareTo(BigDecimal.ZERO) <= 0) {
+			throw new IllegalArgumentException("Transaction amount must be greater than zero");
+		}
+		
+		BigDecimal signedAmount;
+		
+		switch (transaction.getType()) {
+			case INCOME -> signedAmount = amount;
+			case EXPENSE -> signedAmount = amount.negate();
+			default -> throw new IllegalStateException("Invalid transaction type");
+		}
+		
+		accountService.updateBalance(transaction.getAccount(), signedAmount);
+		
+		transaction.setStatus(Status.PAID);
+		transaction.setDate(LocalDate.now());
+		
+		userRepository.save(user);
+		transactionRepository.save(transaction);
+		
+		log.info( "Transaction paid successfully | transactionId= "+ transaction.getId() + " | userId= " + user.getId()  + " | value=" + signedAmount);
+	}
 	
 	public void generateNextMonthRecurringTransactions(Long userId){
-	
+		
+		
+		1. **Validar entrada**
+			
+			* Verificar se `userId` não é nulo
+		
+		2. **Buscar usuário**
+			
+			* Confirmar existência do usuário
+		
+		3. **Buscar transações recorrentes**
+
+   * Buscar transações do usuário:
+
+     * Com recorrência ativa
+			* Status compatível (ex: `PAID` ou `OPEN`)
+		
+		4. **Iterar transações**
+			Para cada transação recorrente:
+
+   * Calcular próxima data (via `RecurrenceService`)
+			* Ignorar se frequência for `ONCE`
+   * Ignorar se data já foi gerada
+		
+		5. **Criar nova transação**
+
+   * Copiar:
+
+     * `amount`
+     * `description`
+     * `type`
+     * `account`
+     * `user`
+   * Setar nova `date`
+   * Setar status inicial (`PENDING`)
+		
+		6. **Salvar nova transação**
+
+   * Persistir no banco
+		
+		7. **Atualizar data base**
+
+   * Atualizar data da transação original
+			* Persistir atualização
+		
+		8. **Log**
+			
+			* Logar geração automática
+   * Logar ID original e novo ID
+   * Logar frequência
+		
+		9. **Retorno**
+			
+			* Método `void`
+   * Apenas processamento interno
+		
+		
+		
 	};
 }
