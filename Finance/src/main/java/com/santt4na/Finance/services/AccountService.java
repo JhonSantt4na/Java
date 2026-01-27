@@ -92,8 +92,3 @@ public class AccountService {
 		accountRepository.save(account);
 	}
 }
-//Uma conta pertence a um único usuário
-//Criar conta para um usuário
-//Buscar contas do usuário
-//Atualizar saldo
-//Validar ownership

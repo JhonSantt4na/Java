@@ -41,10 +41,4 @@ public class UserService {
 		userRepository.delete(getOrFail(userId));
 		log.info("User Deleted with Success");
 	}
-	
 }
-
-//Criar usuário
-//Buscar usuário
-//Garantir que o usuário existe
-//(Futuro) autenticação / autorização

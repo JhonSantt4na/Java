@@ -163,64 +163,53 @@ public class TransactionService {
 		log.info( "Transaction paid successfully | transactionId= "+ transaction.getId() + " | userId= " + user.getId()  + " | value=" + signedAmount);
 	}
 	
-	public void generateNextMonthRecurringTransactions(Long userId){
+	@Transactional
+	public void generateNextMonthRecurringTransactions(Long userId) {
 		
+		if (userId == null) {
+			throw new IllegalArgumentException("UserId cannot be null");
+		}
 		
-		1. **Validar entrada**
+		User user = userRepository.findById(userId)
+			.orElseThrow(() -> new RuntimeException("User not found with id: " + userId));
+		
+		List<Transaction> transactions =
+			transactionRepository.findAllActiveRecurring();
+		
+		for (Transaction transaction : transactions) {
 			
-			* Verificar se `userId` não é nulo
-		
-		2. **Buscar usuário**
+			if (!Objects.equals(transaction.getUser().getId(), user.getId())) {
+				continue;
+			}
 			
-			* Confirmar existência do usuário
-		
-		3. **Buscar transações recorrentes**
-
-   * Buscar transações do usuário:
-
-     * Com recorrência ativa
-			* Status compatível (ex: `PAID` ou `OPEN`)
-		
-		4. **Iterar transações**
-			Para cada transação recorrente:
-
-   * Calcular próxima data (via `RecurrenceService`)
-			* Ignorar se frequência for `ONCE`
-   * Ignorar se data já foi gerada
-		
-		5. **Criar nova transação**
-
-   * Copiar:
-
-     * `amount`
-     * `description`
-     * `type`
-     * `account`
-     * `user`
-   * Setar nova `date`
-   * Setar status inicial (`PENDING`)
-		
-		6. **Salvar nova transação**
-
-   * Persistir no banco
-		
-		7. **Atualizar data base**
-
-   * Atualizar data da transação original
-			* Persistir atualização
-		
-		8. **Log**
+			Recurrence recurrence = transaction.getRecurrence();
 			
-			* Logar geração automática
-   * Logar ID original e novo ID
-   * Logar frequência
-		
-		9. **Retorno**
+			if (recurrence.getFrequency() == Frequency.ONCE) {
+				continue;
+			}
 			
-			* Método `void`
-   * Apenas processamento interno
-		
-		
-		
-	};
+			LocalDate nextDate = recurrenceService.calculateNextDate(transaction);
+			
+			boolean alreadyExists = transactionRepository.existsByUserIdAndAccountIdAndDateAndRecurrence(
+					user.getId(), transaction.getAccount().getId(), nextDate, recurrence);
+			
+			if (alreadyExists) {
+				continue;
+			}
+			
+			Transaction nextTransaction = new Transaction();
+			nextTransaction.setUser(user);
+			nextTransaction.setAccount(transaction.getAccount());
+			nextTransaction.setType(transaction.getType());
+			nextTransaction.setAmount(transaction.getAmount());
+			nextTransaction.setDescription(transaction.getDescription());
+			nextTransaction.setDate(nextDate);
+			nextTransaction.setStatus(Status.PENDING);
+			nextTransaction.setRecurrence(recurrence);
+			
+			transactionRepository.save(nextTransaction);
+			
+			log.info("Recurring transaction generated. OriginalId: " +transaction.getId() +", NewDate: "+ nextDate);
+		}
+	}
 }

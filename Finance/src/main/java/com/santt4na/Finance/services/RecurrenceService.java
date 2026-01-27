@@ -88,6 +88,3 @@ public class RecurrenceService {
 		return nextMonth.withDayOfMonth(day);
 	}
 }
-//Gerar transações futuras
-//Calcular próxima data
-//Executar recorrências automaticamente
