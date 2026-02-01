@@ -1,6 +1,6 @@
 package com.santt4na.Finance.Controller;
 
-import com.santt4na.Finance.services.AccountService;
+import com.santt4na.Finance.services.TransactionService;
 import lombok.AllArgsConstructor;
 import lombok.extern.java.Log;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 @Log
 @RestController
 @AllArgsConstructor
-@RequestMapping("/v1/account")
-public class AccountController {
+@RequestMapping("/v1/transaction")
+public class TransactionController {
 	
-	private final AccountService accountService;
+	private final TransactionService transactionService;
 	
 	
 }
