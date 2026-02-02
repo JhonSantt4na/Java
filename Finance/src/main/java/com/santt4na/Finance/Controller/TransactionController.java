@@ -1,11 +1,13 @@
 package com.santt4na.Finance.Controller;
 
+import com.santt4na.Finance.entity.Transaction;
 import com.santt4na.Finance.services.RecurrenceService;
 import com.santt4na.Finance.services.TransactionService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.extern.java.Log;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @Log
 @RestController
@@ -16,5 +18,11 @@ public class TransactionController {
 	private final RecurrenceService recurrenceService;
 	private final TransactionService transactionService;
 	
+	@PostMapping("/{userId}")
+	public ResponseEntity<Transaction> createTransaction(@RequestBody @Valid Transaction transaction,
+														 @RequestParam Long userId, Long accountId) throws Exception {
+		Transaction newTransaction = transactionService.createTransaction(userId, accountId, transaction);
+		return ResponseEntity.ok(newTransaction);
+	}
 	
 }
