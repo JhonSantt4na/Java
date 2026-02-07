@@ -5,10 +5,7 @@ import com.santt4na.Finance.services.AccountService;
 import lombok.AllArgsConstructor;
 import lombok.extern.java.Log;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Log
 @RestController
@@ -23,4 +20,14 @@ public class AccountController {
 		Account newAccount = accountService.create(userId, account);
 		return ResponseEntity.ok(newAccount);
 	}
+	
+	@DeleteMapping("/deleteAccount/{userId}")
+	public ResponseEntity<Void> deleteAccount(@PathVariable Long userId){
+		accountService.delete(userId);
+		return ResponseEntity.noContent().build();
+	}
+	
+	
+	
+	
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.Objects;
+import java.util.Optional;
 
 
 @Log
@@ -90,5 +91,10 @@ public class AccountService {
 		
 		account.setBalance(account.getBalance().add(amount));
 		accountRepository.save(account);
+	}
+	
+	public void delete(Long userId){
+		Optional<Account> user = accountRepository.findById(userId);
+		accountRepository.delete(user);
 	}
 }
