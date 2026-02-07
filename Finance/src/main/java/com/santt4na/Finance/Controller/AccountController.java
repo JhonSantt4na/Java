@@ -27,7 +27,10 @@ public class AccountController {
 		return ResponseEntity.noContent().build();
 	}
 	
-	
-	
+	@GetMapping("/{userId}/{accountId}")
+	public ResponseEntity<Account> getByIdAndUser(@PathVariable Long userId, @PathVariable Long accountId) throws Exception {
+		Account account = accountService.getByIdAndUser(accountId, userId);
+		return ResponseEntity.ok(account);
+	}
 	
 }
